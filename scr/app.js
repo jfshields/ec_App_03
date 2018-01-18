@@ -2,14 +2,13 @@
 
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
-import Carers from './components/Carers'
+import Home from './components/layouts/Home'
 
 class App extends Component {
 	render(){
 		return (
 		<div >
-			Hello React, This is the fourth
-			<Carers />
+			<Home />
 		</div>
 		)
 	}
