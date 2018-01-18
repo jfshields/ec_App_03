@@ -7,7 +7,7 @@ class CarerClient extends Component {
 		return(
 			<div style= {{marginBottom: 16, borderBottom: '1px solid #ddd'}}>
 				<p style= {{fontSize: 20, fontWeight: 400}}>
-					{this.props.currentClient.client_name}
+					{this.props.currentClient.carer_name}
 				</p>
 
 				<span>{this.props.currentClient.n_visits}</span>

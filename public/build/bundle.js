@@ -18420,7 +18420,7 @@ var Carers = function (_Component) {
 			var listCarers = this.state.list.map(function (carer, i) {
 				return _react2.default.createElement(
 					'li',
-					null,
+					{ key: i },
 					_react2.default.createElement(_CarerBox2.default, { currentCarer: carer })
 				);
 			});
@@ -18481,18 +18481,61 @@ var CarerClients = function (_Component) {
 		var _this = _possibleConstructorReturn(this, (CarerClients.__proto__ || Object.getPrototypeOf(CarerClients)).call(this));
 
 		_this.state = {
-			list: [{ client_name: 'Dave Johnson', n_visits: 13, d_lastvisit: '01-03-2018' }, { client_name: 'Ed Balls', n_visits: 7, d_lastvisit: 'DD-MM-YYYY' }, { client_name: 'Lizzie James', n_visits: 12, d_lastvisit: 'DD-MM-YYYY' }, { client_name: 'Dave Johnson', n_visits: 7, d_lastvisit: 'DD-MM-YYYY' }]
+			carer: {
+				carer_name: "",
+				n_visits: 0,
+				d_lastvisit: 'DD-MM-YYYY'
+			},
+			list: [{ carer_name: 'Dave Johnson', n_visits: 13, d_lastvisit: '01-03-2018' }, { carer_name: 'Ed Balls', n_visits: 7, d_lastvisit: 'DD-MM-YYYY' }, { carer_name: 'Lizzie James', n_visits: 12, d_lastvisit: 'DD-MM-YYYY' }, { carer_name: 'Dave Johnson', n_visits: 7, d_lastvisit: 'DD-MM-YYYY' }]
 		};
 		return _this;
 	}
 
 	_createClass(CarerClients, [{
+		key: 'submitCarer',
+		value: function submitCarer() {
+			console.log('Button hit!!!' + JSON.stringify(this.state.carer));
+		}
+	}, {
+		key: 'updateCarerName',
+		value: function updateCarerName(event) {
+			console.log('updateCarerName!!!' + event.target.value);
+
+			var updateCarer = Object.assign({}, this.state.carer);
+			updateCarer['carer_name'] = event.target.value;
+			this.setState({
+				carer: updateCarer
+			});
+		}
+	}, {
+		key: 'updateCarerNVisits',
+		value: function updateCarerNVisits(event) {
+			console.log('updateCarerName!!!' + event.target.value);
+
+			var updateCarer = Object.assign({}, this.state.carer);
+			updateCarer['n_visits'] = event.target.value;
+			this.setState({
+				carer: updateCarer
+			});
+		}
+	}, {
+		key: 'updateDLastVisit',
+		value: function updateDLastVisit(event) {
+			console.log('updateDLastVisit!!!' + event.target.value);
+
+			var updateCarer = Object.assign({}, this.state.carer);
+			updateCarer['d_lastvisit'] = event.target.value;
+			this.setState({
+				carer: updateCarer
+			});
+		}
+	}, {
 		key: 'render',
 		value: function render() {
 			var listClients = this.state.list.map(function (client, i) {
 				return _react2.default.createElement(
 					'li',
-					null,
+					{ key: i },
 					_react2.default.createElement(_CarerClient2.default, { currentClient: client })
 				);
 			});
@@ -18512,6 +18555,17 @@ var CarerClients = function (_Component) {
 						'ul',
 						{ style: { listStyleType: 'none' } },
 						listClients
+					),
+					_react2.default.createElement('input', { onChange: this.updateCarerName.bind(this), className: 'form-control', type: 'text', placeholder: 'Carer name' }),
+					_react2.default.createElement('br', null),
+					_react2.default.createElement('input', { onChange: this.updateCarerNVisits.bind(this), className: 'form-control', type: 'text', placeholder: 'Number of visits' }),
+					_react2.default.createElement('br', null),
+					_react2.default.createElement('input', { onChange: this.updateDLastVisit.bind(this), className: 'form-control', type: 'text', placeholder: 'Date' }),
+					_react2.default.createElement('br', null),
+					_react2.default.createElement(
+						'button',
+						{ onClick: this.submitCarer.bind(this), className: 'btn btn-info' },
+						'Submit new Carer'
 					)
 				)
 			);
@@ -18643,7 +18697,7 @@ var CarerClient = function (_Component) {
 				_react2.default.createElement(
 					'p',
 					{ style: { fontSize: 20, fontWeight: 400 } },
-					this.props.currentClient.client_name
+					this.props.currentClient.carer_name
 				),
 				_react2.default.createElement(
 					'span',

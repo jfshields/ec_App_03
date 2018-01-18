@@ -18,7 +18,7 @@ class Carers extends Component {
 	render(){
 		const listCarers= this.state.list.map((carer, i) => {
 			return (
-				<li><CarerBox currentCarer= {carer} /></li>
+				<li key= {i}><CarerBox currentCarer= {carer} /></li>
 			)
 		})
 
