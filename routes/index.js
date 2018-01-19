@@ -14,4 +14,8 @@ router.get('/create_careplan', function(req, res, next) {
 	res.render('create_careplan', null);
 });
 
+router.get('/create_carer_personal', function(req, res, next) {
+	res.render('create_carer_personal', null);
+});
+
 module.exports = router;

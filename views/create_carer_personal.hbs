@@ -1,0 +1,18 @@
+// create_carer_personal.hbs
+
+<html>
+<head>
+    <title>{{ title }}</title>
+</head>
+<body>
+    <p>Create carer_personal</p>
+    <form action= "/api/carer_personal" method= "post">
+    	<input type="text" name="name_first" placeholder="First name" /><br />
+    	<input type="text" name="name_surna" placeholder="Surname" /><br />
+    	<input type="date" name="d_onboard" placeholder="Date joined" /><br />
+    	<input type="text" name="status" placeholder="Status" /><br />
+    	<input type="submit" value= "Create new carer" />
+    </form>
+</body>
+</html>
+

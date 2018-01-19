@@ -2,7 +2,7 @@
 
 var express= require('express');
 var router= express.Router();
-var controllers= require('../controllers');
+var controllers= require('../controllers/index');
 
 router.get('/', function(req, res, next){
 	res.json({

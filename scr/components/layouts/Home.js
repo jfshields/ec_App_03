@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Carers from '../containers/Carers.js'
-import CarerClients from '../containers/CarerClients.js'
+import ClientsList from '../containers/ClientsList.js'
+import ClientsCarersList from '../containers/CarerClients.js'
 
 class Home extends Component {
 	render(){
@@ -8,10 +8,10 @@ class Home extends Component {
 			<div className= "container">
 				<div className= "row">
 					<div className= 'col-md-4'>
-						<Carers />
+						<ClientsList />
 					</div>
 					<div className= 'col-md-8'>
-						<CarerClients />
+						<ClientsCarersList />
 					</div>
 				</div>
 			</div>

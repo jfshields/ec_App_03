@@ -2,12 +2,14 @@
 import React, { Component } from 'react';
 import styles from './styles.js'
 
-class CarerBox extends Component { 
+class ClientBox extends Component { 
 
 	render(){
 		const style= styles.carerbox
+		
 		return (
 			<div style={style.container}>
+				Hello...!
 				<h2 style= {style.header}>
 					<a style= {style.title} href="#">{this.props.currentCarer.name}</a>
 				</h2>
@@ -19,4 +21,4 @@ class CarerBox extends Component {
 	}
 }
 
-export default CarerBox
+export default ClientBox
