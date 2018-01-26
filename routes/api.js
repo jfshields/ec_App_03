@@ -35,7 +35,7 @@ router.get('/:resource/:id', function(req, res, next){
 	var controller= controllers[resource]
 	var id= req.params.id
 
-	controller.findById(id, function (err, result) {
+	controller.findById(id, function(err, result) {
 		if (err){
 			res.json({
 				confirmation: 'fail_03',
@@ -46,6 +46,25 @@ router.get('/:resource/:id', function(req, res, next){
 		res.json({
 			confirmation: 'succ_02',
 			result: result
+		})
+	})
+});
+
+router.get('/:resource/delete/:id', function(req, res){
+	var resource= req.params.resource
+	var controller= controllers[resource]
+	var id= req.params.id
+
+	controller.findByIdAndRemove(id, function(err, result){
+		if(err){
+			result.json({
+				confirmation: 'fail_03',
+				message: err
+			})
+		}
+		res.json({
+			confirmation: 'succ_02',
+			result: null
 		})
 	})
 });

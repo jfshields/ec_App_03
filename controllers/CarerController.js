@@ -1,5 +1,5 @@
 // CarerController.js
-var Carer= require('../models/CarerSchema');
+var Carer= require('../models/SchemaCarer');
 
 module.exports= {
 

@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import ClientBox from '../presentation/ClientBox.js'
+import { ShowClient, CreateClient } from '../presentation/index.js'
+import { APIManager } from '../../utils'
+import Axios from 'axios';
 
 class ClientsList extends Component {
 	constructor(){
@@ -7,52 +9,69 @@ class ClientsList extends Component {
 		this.state= {
 			client: {
 				name: ""
-				, number: ""
-				, n_carers: ""
+				, id: ""
+				, _id: ""
 			},
 			list: [
-				{name: "Alan", number: '1', n_carers: '10' }, 
-				{name: "Paul", number: '2', n_carers: '4' }
+//				{name: "Alan1", id: '1'}, 
+//				{name: "Paul", id: '2'}
 			]
 		}
 	}
 
-	submitClient(){
-//		console.log('submitClient- hit!')
-		let updatedList= Object.assign([], this.state.list)
-		updatedList.push(this.state.client)
-		this.setState({
-			list: updatedList
+	componentDidMount(){
+		APIManager.get("/api/client01", (err, res)=> {
+			if (err) {
+				alert('Err1'+ err)
+				return
+			}
+			this.setState({
+				list: res
+			})
 		})
 	}
 
-	updateAny(event){
-		let updatedClient= Object.assign({}, this.state.client)
-		updatedClient[event.target.id]= event.target.value
-		this.setState({
-			client: updatedClient
+	addClient(client){
+		APIManager.post("/api/client01", client, (err, res)=>{
+			if (err) {
+				alert('Err2'+ err)
+				return
+			}
+			this.componentDidMount()
 		})
 	}
+
+	deleteClient(client_id){
+
+		APIManager.get("api/client01/delete/"+ client_id, (err, res)=> {
+			if (err) {
+				alert('Err2'+ err)
+				return
+			}
+			alert(res)
+		})
+		componentDidMount()
+	}
+
 
 	render(){
 		const listClients= this.state.list.map((client, i) => {
 			return (
-				<li key= {i}><ClientBox currentClient= {client} /></li>
+				<li key= {i}><ShowClient onDelete= {this.deleteClient.bind(this.state.client._id)} currentClient= {client} /></li>
 			)
 		})
 
 		return (
 			<div>
 				<h1>Clients</h1>
+				
 				<div style= {{padding: 12, background: '#f9f9f9', border: '1px solid #ddd '}}>
 					<ul style= {{listStyleType: 'none'}}>
 						{listClients}
 					</ul>
 
-					<div>Add new client</div>
-					<input id= "name" onChange= {this.updateAny.bind(this)} className= "form-control" placeholder= "Client name" type= "text" ></ input><br />
-					<input id= "number" onChange= {this.updateAny.bind(this)} className= "form-control" placeholder= "Client ID" type= "text" ></ input><br />
-					<button onClick= {this.submitClient.bind(this)} className= "btn btn-danger">Submit new client</button>
+					<CreateClient onCreate= {this.addClient.bind(this)} />
+
 				</div>
 			</div>
 		)

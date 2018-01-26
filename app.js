@@ -16,7 +16,7 @@ var users = require('./routes/users');
 var json = require('./routes/json');
 var api = require('./routes/api');
 
-var app = express();
+var app = express(); 
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -26,6 +26,7 @@ app.set('view engine', 'hbs');
 app.listen(4000, function() {
 	console.log(path.join(__dirname))
 });
+
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -39,6 +40,7 @@ app.use('/', index);
 app.use('/users', users);
 app.use('/json', json);
 app.use('/api', api);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

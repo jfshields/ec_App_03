@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ClientsList from '../containers/ClientsList.js'
-import ClientsCarersList from '../containers/CarerClients.js'
+import CarersList from '../containers/CarersList.js'
 
 class Home extends Component {
 	render(){
@@ -11,7 +11,7 @@ class Home extends Component {
 						<ClientsList />
 					</div>
 					<div className= 'col-md-8'>
-						<ClientsCarersList />
+						<CarersList />
 					</div>
 				</div>
 			</div>
